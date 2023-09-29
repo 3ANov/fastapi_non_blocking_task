@@ -11,7 +11,7 @@ executor = concurrent.futures.ThreadPoolExecutor(max_workers=1)
 
 @app.get("/")
 async def root():
-    loop = asyncio.get_event_loop()
-    loop.run_in_executor(executor, blocking_task)
-
+    # loop = asyncio.get_event_loop()
+    # loop.run_in_executor(executor, blocking_task)
+    asyncio.create_task(blocking_task())
     return {"message": "Hello World"}
